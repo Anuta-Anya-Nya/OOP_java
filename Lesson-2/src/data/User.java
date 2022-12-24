@@ -13,6 +13,10 @@ public abstract class User {
     public User(){
 
     }
+    @Override
+    public String toString() {
+        return "Student{ fio: "+fio+" }";
+    }
     public String getFio() {
         return fio;
     }
