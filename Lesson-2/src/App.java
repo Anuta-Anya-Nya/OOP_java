@@ -4,10 +4,10 @@ import java.util.List;
 
 
 import data.GroupStream;
-import data.GroupStreamComparator;
 import data.Student;
 import data.StudentGroup;
-import data.UserComparator;
+import data.comparators.GroupStreamComparator;
+import data.comparators.UserComparator;
 
 
 

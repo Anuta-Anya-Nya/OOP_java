@@ -40,3 +40,34 @@
 4.2 Реализовать контракт compareTo() со сравнением по ФИО
 4.3 Модифицировать класс StudentGroupServiceImpl, добавив в него метод сортировки списка студентов по ФИО
 4.4 модифицировать класс Controller, добавив в него метод сортировки списка студентов по ФИО и вызывать в нем созданный метод из StudentgroupServiceImpl
+
+Обобщения
+1. Создать пакет repository
+1.1 Реализовать в нем интерфейс Repository<E, I>
+1.2 Задать в созданном интерфейсе 2 абстрактных метода save(E entity); findById(I id);
+1.3 Создать класс GroupRepository имплементировав его от созданного интерфейса
+
+2. Создать класс GroupRepository имплементировав его от Repository<Group, Integer>
+2.2 В классе StudentGroupServiceImpl добавить новую переменную Repository<Group, Integer>
+2.3 В классе StudentGroupServiceImpl реализовать методы сохранения группы и поиска ее по номеру
+
+3.1. Создать интерфейс UserRepository<U extends User,I>, унаследовав его от repository<E,I>
+3.2 В интерфейс UserRepository<E,I> задать абстрактный метод E findByFio(String fio)
+3.3 Создать класс StudentRepository имплементировав интерфейс UserRepository
+
+4.1 создать класс StudentRepository имплементировав интерфейс UserRepository <Student, Integer>
+4.2 В классе StudentService добавить новую переменную StudentRepository
+4.3 В классе StudentService реализовать методы сохранения студента и его поиска по id и фио
+
+static <T extends Comparable<T>>//дженеризируем метод, маска с интерфейсами задается здесь, словом extends// List<T> sortList(List<T> list){ 
+  Collections.sort(list);
+  return list;
+} // метод принимает список обьектов, наследующих Comparable и сортирует их
+
+Домашка 4:
+Реализовать класc TeacherRepository (обобщение на ваше усмотрение)
+Обобщить интерфейс DataService, чтобы он работал только с наследникам класса User
+Реализовать методы поиска и сохранения в классе TeacherService
+Реализовать как можно более обобщенный интерфейс Controller
+Создать классы StudentController, TeacherController, GroupController с методами сохранения и поиска соответствующих объектов
+* Реализовать такой же функционал для класса GroupStream

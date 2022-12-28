@@ -3,13 +3,12 @@ package data;
 import java.util.Iterator;
 import java.util.List;
 
+import data.iterators.GroupStreamIterator;
+
 public class GroupStream implements Iterable<StudentGroup>{
     private List<StudentGroup> studentGroupList;
+    private int streamNumber;
     
-    public int getSize() {
-        return studentGroupList.size();
-    }
-
     public GroupStream(List<StudentGroup> studentGroupList) {
         this.studentGroupList = studentGroupList;
     }
@@ -26,5 +25,10 @@ public class GroupStream implements Iterable<StudentGroup>{
     public List<StudentGroup> getStudentGroupList() {
         return studentGroupList;
     }
-    
+    public int getSize() {
+        return studentGroupList.size();
+    }
+    public int getStreamNumber() {
+        return streamNumber;
+    }
 }
