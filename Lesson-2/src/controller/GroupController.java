@@ -3,7 +3,7 @@ package controller;
 import data.StudentGroup;
 import service.group.GroupServiceImpl;
 
-public class GroupController implements Controller<StudentGroup, Integer>{
+public class GroupController implements Controller<StudentGroup, Integer> {
     private final GroupServiceImpl groupServiceImpl;
 
     public GroupController(GroupServiceImpl groupServiceImpl) {
@@ -19,7 +19,7 @@ public class GroupController implements Controller<StudentGroup, Integer>{
 
     @Override
     public void save(StudentGroup entity) {
-        groupServiceImpl.saveGroup(entity);        
+        groupServiceImpl.saveGroup(entity);
     }
 
     @Override
@@ -34,7 +34,5 @@ public class GroupController implements Controller<StudentGroup, Integer>{
     public void sortStudent(StudentGroup studentGroup) {
         groupServiceImpl.sortStudent(studentGroup);
     }
-
-    
 
 }

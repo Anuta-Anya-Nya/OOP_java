@@ -1,21 +1,15 @@
 package service.user;
 
 import data.Teacher;
-import data.User;
 import repository.TeacherRepository;
 import util.ReaderFromTxt;
 import util.WriterToTxt;
 
-public class TeacherService implements DataService<User>{
+public class TeacherService implements DataService<Teacher>{
     private TeacherRepository teacherRepository;
 
-    @Override
-    public void create(User user) {
-        WriterToTxt.write(user);
-    }
-    @Override
-    public User read(User user) {
-        return ReaderFromTxt.read(user);
+    public TeacherService(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
     }
     public void saveTeacher(Teacher teacher){
         teacherRepository.save(teacher);
@@ -25,6 +19,14 @@ public class TeacherService implements DataService<User>{
     }
     public Teacher findTeacherByFio(String fio) {
         return teacherRepository.findByFio(fio);
+    }
+    @Override
+    public void create(Teacher user) {
+        WriterToTxt.write(user);
+    }
+    @Override
+    public Teacher read(Teacher user) {
+        return ReaderFromTxt.read(user);
     }
     
 }

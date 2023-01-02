@@ -13,7 +13,7 @@ public class StudentController implements UserController<Student, Integer>{
     @Override
     public Student create(Student item) {
         studentService.create(item);
-        return (Student)studentService.read(item);        
+        return studentService.read(item);        
     }
 
     @Override

@@ -13,7 +13,7 @@ public class TeacherController implements UserController<Teacher, Integer> {
     @Override
     public Teacher create(Teacher item) {
         teacherService.create(item);
-        return (Teacher) teacherService.read(item);
+        return teacherService.read(item);
         
     }
 
