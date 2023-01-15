@@ -1,39 +1,43 @@
 package service.user;
 
 import data.Student;
+import data.comparators.UserComparator;
 import repository.StudentRepository;
-import util.ReaderFromTxt;
-import util.WriterToTxt;
 
-public class StudentService implements DataService<Student>{
-    StudentRepository studentRepository;
+import java.util.Collections;
+import java.util.List;
+
+public class StudentService implements DataService<Student> {
+
+    private final StudentRepository studentRepository;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    public StudentRepository getStudentRepository() {
-        return studentRepository;
-    }
 
-    public void saveStudent(Student student){
-        studentRepository.save(student);
-    }
-    public Student findStudentById(int id) { 
-        return studentRepository.findById(id);        
-    }
-    public Student findStudentByFio(String fio) {
-        return studentRepository.findByFio(fio);
+    @Override
+    public Student createUser(Student user) {
+        return studentRepository.save(user);
     }
 
     @Override
-    public void create(Student user) {
-        WriterToTxt.write(user);        
+    public Student findById(Integer id) {
+        return studentRepository.findById(id);
     }
 
     @Override
-    public Student read(Student user) {
-        return ReaderFromTxt.read(user);
+    public Student findByLastName(String lastName) {
+        return studentRepository.findByLastName(lastName);
     }
-    
+
+    @Override
+    public void sortUsers(List<Student> users) {
+        Collections.sort(users);
+    }
+
+    @Override
+    public void sortUsersByName(List<Student> users) {
+        Collections.sort(users, new UserComparator());
+    }
 }

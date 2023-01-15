@@ -1,15 +1,18 @@
 package data;
 
-public class Teacher extends User{
-    private String kafedra;
+public class Teacher extends User {
+    private String rank;
 
-    public String getKafedra() {
-        return kafedra;
+    public Teacher(String firstName, String lastName, int id, String rank) {
+        super(firstName, lastName, id);
+        this.rank = rank;
     }
 
-    public Teacher(String fio, int age, int numberPass, String kafedra) {
-        super(fio, age, numberPass);
-        this.kafedra = kafedra;
+    public String getRank() {
+        return rank;
     }
 
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
 }

@@ -1,11 +1,9 @@
 package controller;
 
-public interface Controller<U, I> {
-    U create(U entity);
+public interface Controller<E, I> {
+    E create(E entity);
 
-    void save(U entity);
-
-    U findById(I id);
+    E findById(I id);
 }
 // import java.util.List;
 

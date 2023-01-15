@@ -2,7 +2,8 @@ package repository;
 
 import data.Student;
 
-public class StudentRepository implements UserRepository<Student, Integer> {
+public class StudentRepository implements UserRepository<Student,Integer>{
+
 
     @Override
     public Student save(Student entity) {
@@ -15,8 +16,7 @@ public class StudentRepository implements UserRepository<Student, Integer> {
     }
 
     @Override
-    public Student findByFio(String fio) {
+    public Student findByLastName(String LastName) {
         return null;
     }
-
 }

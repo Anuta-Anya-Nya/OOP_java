@@ -2,6 +2,6 @@ package controller;
 
 import data.User;
 
-public interface UserController<U extends User, I> extends Controller<U,I>{
-    U findByFio(String fio);
+public interface UserController<E extends User, I> extends Controller<E, I> {
+    E findByLastName(String LastName);
 }

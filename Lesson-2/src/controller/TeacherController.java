@@ -11,25 +11,17 @@ public class TeacherController implements UserController<Teacher, Integer> {
     }
 
     @Override
-    public Teacher create(Teacher item) {
-        teacherService.create(item);
-        return teacherService.read(item);
-        
+    public Teacher create(Teacher teacher) {
+        return teacherService.createUser(teacher);
     }
 
     @Override
     public Teacher findById(Integer id) {
-        return teacherService.findTeacherById(id);
+        return teacherService.findById(id);
     }
 
     @Override
-    public Teacher findByFio(String fio) {
-        return teacherService.findTeacherByFio(fio);
+    public Teacher findByLastName(String lastName) {
+        return teacherService.findByLastName(lastName);
     }
-
-    @Override
-    public void save(Teacher entity) {
-        teacherService.saveTeacher(entity);
-    }
-    
 }

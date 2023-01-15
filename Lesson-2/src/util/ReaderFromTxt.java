@@ -1,13 +1,18 @@
 package util;
 
-import data.StudentGroup;
-import data.User;
+
+import data.Student;
+import data.Teacher;
+
+import java.util.List;
 
 public class ReaderFromTxt {
-    public static <U extends User> U read(U user) {
+
+    public static Teacher getTeacherFromTxt() {
         return null;
     }
-    public static StudentGroup readGroup(int groupNumber) {
+
+    public static List<Student> getStudentsFromTxt() {
         return null;
     }
 }

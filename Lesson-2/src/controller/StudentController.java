@@ -3,7 +3,9 @@ package controller;
 import data.Student;
 import service.user.StudentService;
 
-public class StudentController implements UserController<Student, Integer>{
+
+public class StudentController implements UserController<Student, Integer> {
+
     private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
@@ -11,27 +13,17 @@ public class StudentController implements UserController<Student, Integer>{
     }
 
     @Override
-    public Student create(Student item) {
-        studentService.create(item);
-        return studentService.read(item);        
+    public Student create(Student entity) {
+        return studentService.createUser(entity);
     }
 
     @Override
     public Student findById(Integer id) {
-        return studentService.findStudentById(id);
+        return studentService.findById(id);
     }
 
     @Override
-    public Student findByFio(String fio) {
-        return studentService.findStudentByFio(fio);
+    public Student findByLastName(String LastName) {
+        return studentService.findByLastName(LastName);
     }
-
-    @Override
-    public void save(Student entity) {
-        studentService.saveStudent(entity);
-    }
-
-    
-    
-    
 }

@@ -1,42 +1,51 @@
 package data;
 
+import data.iterators.StudentGroupIterator;
+
 import java.util.Iterator;
 import java.util.List;
 
-import data.iterators.StudentGroupIterator;
-
 public class StudentGroup implements Iterable<Student> {
-
     private Teacher teacher;
     private List<Student> studentList;
     private int groupNumber;
 
-    public StudentGroup(List<Student> studentList, int groupNumber) {
+    public StudentGroup(Teacher teacher, List<Student> studentList) {
+        this.teacher = teacher;
         this.studentList = studentList;
-        this.groupNumber = groupNumber;
     }
 
-    public StudentGroup(int groupNumber) {
+    public StudentGroup(Teacher teacher, List<Student> studentList, int groupNumber) {
+        this(teacher, studentList);
         this.groupNumber = groupNumber;
     }
-
-    @Override
-    public Iterator<Student> iterator() { // возвращает экземпляр созданного итератора
-        return new StudentGroupIterator(this); // создаем новый экземпляр класса StudentGroupIterator и передаем ему на
-                                               // вход экземпляр класса StudentGroup (т.к. мы в нем находимся, передаем
-                                               // this т.е.самого себя)
-    } // теперь можно итерироваться по участникам группы
 
     public int getGroupNumber() {
         return groupNumber;
+    }
+
+    public void setGroupNumber(int groupNumber) {
+        this.groupNumber = groupNumber;
     }
 
     public Teacher getTeacher() {
         return teacher;
     }
 
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
     public List<Student> getStudentList() {
         return studentList;
     }
 
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    @Override
+    public Iterator<Student> iterator() {
+        return new StudentGroupIterator(this);
+    }
 }

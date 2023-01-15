@@ -1,29 +1,37 @@
 package data;
 
 public abstract class User {
-    private String fio;
-    private int age;
-    private int numberPass;
-    
-    public User(String fio, int age, int numberPass) {
-        this.fio = fio;
-        this.age = age;
-        this.numberPass = numberPass;
-    }
-    public User(){
+    private String firstName;
+    private String lastName;
+    private int id;
 
+    public User(String firstName, String lastName, int id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.id = id;
     }
-    @Override
-    public String toString() {
-        return "Student{ fio: "+fio+" }";
+
+    public String getFirstName() {
+        return firstName;
     }
-    public String getFio() {
-        return fio;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public int getAge() {
-            return age;
-        }
-    public int getNumberPass() {
-    return numberPass;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
