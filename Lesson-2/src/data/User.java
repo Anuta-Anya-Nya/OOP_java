@@ -2,15 +2,15 @@ package data;
 
 public abstract class User {
     private String fio;
-    private int age;
+    private int birthday;
     private int numberPass;
     
     public User(String fio) {
         this.fio = fio;
     }
-    public User(String fio, int age, int numberPass) {
+    public User(String fio, int birth, int numberPass) {
         this.fio = fio;
-        this.age = age;
+        this.birthday = birth;
         this.numberPass = numberPass;
     }
     public User(){
@@ -23,8 +23,8 @@ public abstract class User {
     public String getFio() {
         return fio;
     }
-    public int getAge() {
-            return age;
+    public int getBirthday() {
+            return birthday;
         }
     public int getNumberPass() {
     return numberPass;

@@ -19,4 +19,12 @@ public class StudentRepository implements UserRepository<Student, Integer> {
         return null;
     }
 
+    public Student delete(Student entity) {
+        return null;
+    }
+
+    public Student findByBirth(Integer birthday) {
+        return null;
+    }
+
 }

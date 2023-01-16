@@ -7,16 +7,16 @@ public class Student extends User implements Comparable<Student> {
         super(fio);
     }
 
-    public Student(String fio, int age, int numberPass, int numberGroup) {
-        super(fio, age, numberPass);
+    public Student(String fio, int birth, int numberPass, int numberGroup) {
+        super(fio, birth, numberPass);
         this.numberGroup = numberGroup;
     }
 
     @Override
     public int compareTo(Student student) {
-        if (this.getAge() > student.getAge())
+        if (this.getBirthday() > student.getBirthday())
             return 1;
-        if (this.getAge() < student.getAge())
+        if (this.getBirthday() < student.getBirthday())
             return -1;
         return 0;
     }

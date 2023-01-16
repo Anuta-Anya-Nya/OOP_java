@@ -3,17 +3,18 @@ package terminal;
 import java.util.Scanner;
 
 import terminal.executable.CommandExecutable;
+import terminal.executable.CommandExecutableFactory;
 
 public class TerminalReader {
     // private final static Scanner sc = new Scanner(System.in);
     private static TerminalReader terminalReader;
 
     private CommandParser commandParser;
-    
-    public static TerminalReader getInstance(CommandParser commandParser){
-        if(terminalReader == null){
+
+    public static TerminalReader getInstance(CommandParser commandParser) {
+        if (terminalReader == null) {
             terminalReader = new TerminalReader(commandParser);
-        } 
+        }
         return terminalReader;
     }
 
@@ -21,10 +22,10 @@ public class TerminalReader {
         this.commandParser = commandParser;
     }
 
-    public void ListenerCommand(){
+    public void ListenerCommand() {
         Scanner sc = new Scanner(System.in);
-        while(true){
-            String command=sc.nextLine();
+        while (true) {
+            String command = sc.nextLine();
             String[] comList = commandParser.parseCommand(command);
             CommandExecutableFactory commandExecutableFactory = new CommandExecutableFactory();
             CommandExecutable commandExecutable = commandExecutableFactory.create(comList);

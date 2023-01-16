@@ -3,7 +3,7 @@ package terminal.executable;
 import data.Student;
 import service.user.StudentService;
 
-public class CreateStudentExecutable implements CommandExecutable{
+public class CreateStudentExecutable implements CommandExecutable {
     private final StudentService studentService;
     private final Student student;
 
@@ -11,11 +11,10 @@ public class CreateStudentExecutable implements CommandExecutable{
         this.studentService = studentService;
         this.student = student;
     }
-        
+
     @Override
     public void execute() {
         studentService.saveStudent(student);
     }
 
-    
 }
