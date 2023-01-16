@@ -14,7 +14,7 @@ public class DeleteStudentByFioExecutable implements CommandExecutable {
 
     @Override
     public void execute() {
-        Student student = studentService.findStudentByFio(fio);
+        Student student = studentService.findByFio(fio);
         if (student == null) {
             System.out.println("Студента c такими ФИО не найдено");
         } else {

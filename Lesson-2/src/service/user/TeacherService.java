@@ -24,9 +24,6 @@ public class TeacherService implements DataService<Teacher>{
     public void create(Teacher user) {
         WriterToTxt.write(user);
     }
-    @Override
-    public Teacher read(Teacher user) {
-        return ReaderFromTxt.read(user);
-    }
+    
     
 }
