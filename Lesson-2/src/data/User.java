@@ -5,6 +5,9 @@ public abstract class User {
     private int age;
     private int numberPass;
     
+    public User(String fio) {
+        this.fio = fio;
+    }
     public User(String fio, int age, int numberPass) {
         this.fio = fio;
         this.age = age;

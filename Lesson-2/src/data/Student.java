@@ -2,9 +2,9 @@ package data;
 
 public class Student extends User implements Comparable<Student> {
     private int numberGroup;
-
-    public int getNumberGroup() {
-        return numberGroup;
+    
+    public Student(String fio) {
+        super(fio);
     }
 
     public Student(String fio, int age, int numberPass, int numberGroup) {
@@ -19,6 +19,10 @@ public class Student extends User implements Comparable<Student> {
         if (this.getAge() < student.getAge())
             return -1;
         return 0;
+    }
+    
+    public int getNumberGroup() {
+        return numberGroup;
     }
 
 }

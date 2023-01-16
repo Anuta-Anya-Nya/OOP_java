@@ -25,6 +25,9 @@ public class StudentService implements DataService<Student>{
     public Student findStudentByFio(String fio) {
         return studentRepository.findByFio(fio);
     }
+    public void DeleteStudent() {
+        
+    }
 
     @Override
     public void create(Student user) {
