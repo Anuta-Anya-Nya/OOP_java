@@ -6,22 +6,28 @@ import service.user.StudentService;
 public class CommandExecutableFactory {
     private StudentService studentService;
 
-    public CommandExecutableFactory() {
-    }
+    // public CommandExecutableFactory(StudentService studentService) {
+    // this.studentService = studentService;
+    // }
 
     public CommandExecutable create(String[] input) {
-        if (input[0].equals("add")) {
-            Student student = new Student(input[1]);
-            CreateStudentExecutable createStudentExecutable = new CreateStudentExecutable(studentService, student);
-            return createStudentExecutable;
-        } else if (input[0].equals("dell")) {
-            Student student = new Student(input[1]);
-            return new DeleteStudentExecutable(studentService, student);
-        } else if (input[0].equals("dellByFio")) {
-            return new DeleteStudentByFioExecutable(studentService, input[1]);
-        } else {
-            return new DeleteStudentByGroupAndAge(studentService, Integer.parseInt(input[1]),
-                    Integer.parseInt(input[2]));
+        String command = input[0];
+        String fioOrGroupNumber = input[1];
+        String studentYearOfBirth = input[2];
+
+        switch (command) {
+            case "add":
+                return new CreateStudentExecutable(studentService, new Student(fioOrGroupNumber));
+            case "dell":
+                return new DeleteStudentExecutable(studentService, new Student(fioOrGroupNumber));
+            case "dellByFio":
+                return new DeleteStudentByFioExecutable(studentService, fioOrGroupNumber);
+            case "dellByGroupNumberAndAge":
+                return new DeleteStudentByGroupAndAgeExcecutable(studentService, Integer.parseInt(fioOrGroupNumber),
+                        Integer.parseInt(studentYearOfBirth));
+            default:
+                return null;
         }
+
     }
 }

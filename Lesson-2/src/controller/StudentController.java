@@ -11,24 +11,24 @@ public class StudentController implements UserController<Student, Integer>{
     }
 
     @Override
-    public Student create(Student item) {
-        studentService.create(item);
-        return studentService.read(item);        
+    public void create(Student item) {
+         studentService.create(item);
+                
     }
 
     @Override
     public Student findById(Integer id) {
-        return studentService.findStudentById(id);
+        return studentService.findById(id);
     }
 
     @Override
     public Student findByFio(String fio) {
-        return studentService.findStudentByFio(fio);
+        return studentService.findByFio(fio);
     }
 
     @Override
     public void save(Student entity) {
-        studentService.saveStudent(entity);
+        studentService.create(entity);
     }
 
     

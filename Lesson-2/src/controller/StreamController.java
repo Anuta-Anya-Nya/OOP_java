@@ -13,10 +13,10 @@ public class StreamController implements Controller<GroupStream, Integer>{
     }
 
     @Override
-    public GroupStream create(GroupStream entity) {
+    public void create(GroupStream entity) {
         int streamNumber = entity.getStreamNumber();
         streamService.createStream(streamNumber);
-        return streamService.readStream(streamNumber);
+        
     }
 
     @Override

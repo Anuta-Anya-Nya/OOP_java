@@ -5,10 +5,9 @@ import java.util.Scanner;
 import terminal.executable.CommandExecutable;
 import terminal.executable.CommandExecutableFactory;
 
-public class TerminalReader {
+public class TerminalReader { 
     // private final static Scanner sc = new Scanner(System.in);
     private static TerminalReader terminalReader;
-
     private CommandParser commandParser;
 
     public static TerminalReader getInstance(CommandParser commandParser) {
@@ -22,7 +21,7 @@ public class TerminalReader {
         this.commandParser = commandParser;
     }
 
-    public void ListenerCommand() {
+    public void listenerCommand() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             String command = sc.nextLine();

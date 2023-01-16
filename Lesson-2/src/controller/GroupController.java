@@ -11,10 +11,10 @@ public class GroupController implements Controller<StudentGroup, Integer> {
     }
 
     @Override
-    public StudentGroup create(StudentGroup entity) {
+    public void create(StudentGroup entity) {
         int groupNumber = entity.getGroupNumber();
         groupServiceImpl.createGroup(groupNumber);
-        return groupServiceImpl.readGroup(groupNumber);
+        
     }
 
     @Override
