@@ -1,29 +1,29 @@
 package controller;
 
-import data.StudentGroup;
-import service.group.GroupServiceImpl;
+import data.iterators.StudentGroupIterable;
+import service.group.GroupService;
 
-public class GroupController implements Controller<StudentGroup, Integer> {
-    private final GroupServiceImpl groupServiceImpl;
+public class GroupController implements Controller<StudentGroupIterable, Integer> {
+    private final GroupService<StudentGroupIterable, Integer> groupServiceImpl;
 
-    public GroupController(GroupServiceImpl groupServiceImpl) {
+    public GroupController(GroupService<StudentGroupIterable, Integer> groupServiceImpl) {
         this.groupServiceImpl = groupServiceImpl;
     }
 
     @Override
-    public void create(StudentGroup entity) {
+    public void create(StudentGroupIterable entity) {
         int groupNumber = entity.getGroupNumber();
         groupServiceImpl.createGroup(groupNumber);
         
     }
 
     @Override
-    public void save(StudentGroup entity) {
+    public void save(StudentGroupIterable entity) {
         groupServiceImpl.saveGroup(entity);
     }
 
     @Override
-    public StudentGroup findById(Integer id) {
+    public StudentGroupIterable findById(Integer id) {
         return groupServiceImpl.findGroup(id);
     }
 
@@ -31,7 +31,7 @@ public class GroupController implements Controller<StudentGroup, Integer> {
         groupServiceImpl.removeStudent(fio);
     }
 
-    public void sortStudent(StudentGroup studentGroup) {
+    public void sortStudent(StudentGroupIterable studentGroup) {
         groupServiceImpl.sortStudent(studentGroup);
     }
 

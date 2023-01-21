@@ -21,7 +21,6 @@ public class StreamServiceImpl implements StreamService{
 
     @Override
     public void createStream(int groupNumber) {
-        
     }
 
     @Override
@@ -29,10 +28,13 @@ public class StreamServiceImpl implements StreamService{
         Collections.sort(groupStreamCollection, new GroupStreamComparator());
     }
 
+    @Override
     public void saveGroup(GroupStream stream){ 
         StreamRepository.save(stream);
         
     }
+
+    @Override
     public GroupStream findGroup(Integer number) {
         return StreamRepository.findById(number);
     }

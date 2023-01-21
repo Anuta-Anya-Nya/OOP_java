@@ -1,6 +1,6 @@
 package terminal.executable;
 
-import data.Student;
+import data.comparators.StudentComparable;
 import service.user.StudentService;
 
 public class DeleteStudentByFioExecutable implements CommandExecutable {
@@ -14,11 +14,11 @@ public class DeleteStudentByFioExecutable implements CommandExecutable {
 
     @Override
     public void execute() {
-        Student student = studentService.findByFio(studentFio);
+        StudentComparable student = studentService.findByFio(studentFio);
         if (student == null) {
             System.out.println("Студента c такими ФИО не найдено");
         } else {
-            studentService.DeleteStudent(student);
+            studentService.DeleteUser(student);
             System.out.println("Студент c такими ФИО удален");
         }
     }

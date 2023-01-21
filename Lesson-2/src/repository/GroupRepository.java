@@ -14,5 +14,10 @@ public class GroupRepository implements Repository<StudentGroup, Integer>{
         return null;
     }
 
+    @Override
+    public StudentGroup delete(StudentGroup entity) {
+        return null;
+    }
+
 
 }

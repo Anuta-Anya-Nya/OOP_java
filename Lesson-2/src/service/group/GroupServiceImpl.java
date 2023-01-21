@@ -3,55 +3,63 @@ package service.group;
 import java.util.Collections;
 import java.util.Iterator;
 
-import data.Student;
 import data.StudentGroup;
+import data.comparators.StudentComparable;
+import data.iterators.StudentGroupIterable;
 import repository.Repository;
 import util.ReaderFromTxt;
 import util.WriterToTxt;
 
-public class GroupServiceImpl implements GroupService {
+public class GroupServiceImpl implements GroupService<StudentGroupIterable, Integer> {
 
-    private StudentGroup studentGroup;
-    private final Repository<StudentGroup, Integer> studentGroupIntegerRepository;
-    
-    public GroupServiceImpl(Repository<StudentGroup, Integer> studentGroupIntegerRepository) {
+    private StudentGroupIterable studentGroup;
+    private final Repository<StudentGroupIterable, Integer> studentGroupIntegerRepository;
+
+    public GroupServiceImpl(Repository<StudentGroupIterable, Integer> studentGroupIntegerRepository) {
         this.studentGroupIntegerRepository = studentGroupIntegerRepository;
     }
-    
-    public StudentGroup getStudentGroup() {
-        return studentGroup;
-    }
-    public Repository<StudentGroup, Integer> getStudentGroupIntegerRepository() {
-        return studentGroupIntegerRepository;
+
+    @Override
+    public StudentGroupIterable readGroup(Integer groupNumber) {
+        return ReaderFromTxt.readGroup(groupNumber);
     }
 
     @Override
-    public StudentGroup readGroup(int groupNumber) {
-        return ReaderFromTxt.readGroup(groupNumber);       
-    }
-
-    @Override
-    public void createGroup(int groupNumber) {
+    public void createGroup(Integer groupNumber) {
         WriterToTxt.writeGroup(new StudentGroup(groupNumber));
     }
 
+    @Override
     public void removeStudent(String fio) {
-        Iterator<Student> iterator = getStudentGroup().iterator();
-        while(iterator.hasNext()){
-            if(iterator.next().getFio().equals(fio)){
+        Iterator<StudentComparable> iterator = getStudentGroup().iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getFio().equals(fio)) {
                 iterator.remove();
             }
         }
-    }    
-    public void sortStudent(StudentGroup studentGroup) {
-        Collections.sort(studentGroup.getStudentList()); 
     }
-    public StudentGroup saveGroup(StudentGroup group){ //можно сделать void
+
+    @Override
+    public void sortStudent(StudentGroupIterable studentGroup) {
+        Collections.sort(studentGroup.getStudentList());
+    }
+
+    @Override
+    public StudentGroupIterable saveGroup(StudentGroupIterable group) { // можно сделать void
         return studentGroupIntegerRepository.save(group);
-        
     }
-    public StudentGroup findGroup(Integer number) {
+
+    @Override
+    public StudentGroupIterable findGroup(Integer number) {
         return studentGroupIntegerRepository.findById(number);
+    }
+
+    public Repository<StudentGroupIterable, Integer> getStudentGroupIntegerRepository() {
+        return studentGroupIntegerRepository;
+    }
+
+    public StudentGroupIterable getStudentGroup() {
+        return studentGroup;
     }
 
 }

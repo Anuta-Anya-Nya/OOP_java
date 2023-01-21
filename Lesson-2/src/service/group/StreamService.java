@@ -10,4 +10,8 @@ public interface StreamService {
     void createStream(int groupNumber);
 
     void sortStream(List<GroupStream> groupStream);
+
+    void saveGroup(GroupStream stream);
+
+    GroupStream findGroup(Integer number);
 }

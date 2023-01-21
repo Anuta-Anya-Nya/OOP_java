@@ -1,20 +1,20 @@
 package terminal.executable;
 
-import data.Student;
+import data.comparators.StudentComparable;
 import service.user.StudentService;
 
 public class DeleteStudentExecutable implements CommandExecutable {
     private StudentService studentService;
-    private final Student student;
+    private final StudentComparable student;
 
-    public DeleteStudentExecutable(StudentService studentService, Student student) {
+    public DeleteStudentExecutable(StudentService studentService, StudentComparable student) {
         this.studentService = studentService;
         this.student = student;
     }
 
     @Override
     public void execute() {
-        studentService.DeleteStudent(student);
+        studentService.DeleteUser(student);
         System.out.println("Студент удален");
     }
 

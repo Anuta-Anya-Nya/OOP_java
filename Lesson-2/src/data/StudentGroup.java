@@ -1,17 +1,16 @@
 package data;
 
-import java.util.Iterator;
 import java.util.List;
 
-import data.iterators.StudentGroupIterator;
+import data.comparators.StudentComparable;
 
-public class StudentGroup implements Iterable<Student> {
+public class StudentGroup {
 
     private Teacher teacher;
-    private List<Student> studentList;
+    private List<StudentComparable> studentList;
     private int groupNumber;
 
-    public StudentGroup(List<Student> studentList, int groupNumber) {
+    public StudentGroup(List<StudentComparable> studentList, int groupNumber) {
         this.studentList = studentList;
         this.groupNumber = groupNumber;
     }
@@ -19,13 +18,6 @@ public class StudentGroup implements Iterable<Student> {
     public StudentGroup(int groupNumber) {
         this.groupNumber = groupNumber;
     }
-
-    @Override
-    public Iterator<Student> iterator() { // возвращает экземпляр созданного итератора
-        return new StudentGroupIterator(this); // создаем новый экземпляр класса StudentGroupIterator и передаем ему на
-                                               // вход экземпляр класса StudentGroup (т.к. мы в нем находимся, передаем
-                                               // this т.е.самого себя)
-    } // теперь можно итерироваться по участникам группы
 
     public int getGroupNumber() {
         return groupNumber;
@@ -35,7 +27,7 @@ public class StudentGroup implements Iterable<Student> {
         return teacher;
     }
 
-    public List<Student> getStudentList() {
+    public List<StudentComparable> getStudentList() {
         return studentList;
     }
 

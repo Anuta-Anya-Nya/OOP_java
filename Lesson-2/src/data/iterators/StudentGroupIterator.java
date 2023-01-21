@@ -2,21 +2,18 @@ package data.iterators;
 
 import java.util.Iterator;
 
-import data.Student;
 import data.StudentGroup;
+import data.comparators.StudentComparable;
 
 
-public class StudentGroupIterator implements Iterator<Student> {
+public class StudentGroupIterator implements Iterator<StudentComparable> {
     private StudentGroup studentGroup;
-    private Iterator<Student> students;
+    private Iterator<StudentComparable> students;
     // private List<Student> students;
     // private int cursor; //равен 0 при инициализации
 
 
-    public StudentGroupIterator(StudentGroup studentGroup) {
-        this.studentGroup = studentGroup;
-        // this.students = studentGroup.getStudentList();
-        this.students = studentGroup.getStudentList().iterator();
+    public StudentGroupIterator(StudentGroupIterable studentGroupIterable) {
     }
 
     @Override
@@ -26,7 +23,7 @@ public class StudentGroupIterator implements Iterator<Student> {
     }
 
     @Override
-    public Student next() {
+    public StudentComparable next() {
         // return students.get(cursor++);
         return this.students.next();
     }

@@ -19,4 +19,14 @@ public class TeacherRepository implements UserRepository<Teacher, Integer> {
         return null;
     }
 
+    @Override
+    public Teacher delete(Teacher entity) {
+        return null;
+    }
+
+    @Override
+    public Teacher findByBirth(Integer birthday) {
+        return null;
+    }
+
 }

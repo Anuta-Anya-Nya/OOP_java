@@ -14,4 +14,9 @@ public interface DataService<U extends User> {
    void sortUsers(List<U> users);
 
    void sortUsersByName(List<U> users);
+
+   U findByBirth(int birth);
+
+   void DeleteUser(U user);
+
 }

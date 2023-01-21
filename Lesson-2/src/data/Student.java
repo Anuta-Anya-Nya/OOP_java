@@ -1,8 +1,8 @@
 package data;
 
-public class Student extends User implements Comparable<Student> {
+public class Student extends User {
     private int numberGroup;
-    
+
     public Student(String fio) {
         super(fio);
     }
@@ -12,15 +12,6 @@ public class Student extends User implements Comparable<Student> {
         this.numberGroup = numberGroup;
     }
 
-    @Override
-    public int compareTo(Student student) {
-        if (this.getBirthday() > student.getBirthday())
-            return 1;
-        if (this.getBirthday() < student.getBirthday())
-            return -1;
-        return 0;
-    }
-    
     public int getNumberGroup() {
         return numberGroup;
     }

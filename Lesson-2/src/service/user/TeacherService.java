@@ -5,12 +5,12 @@ import java.util.List;
 
 import data.Teacher;
 import data.comparators.UserComparator;
-import repository.TeacherRepository;
+import repository.UserRepository;
 
 public class TeacherService implements DataService<Teacher> {
-    private TeacherRepository teacherRepository;
+    private final UserRepository<Teacher, Integer> teacherRepository;
 
-    public TeacherService(TeacherRepository teacherRepository) {
+    public TeacherService(UserRepository<Teacher, Integer> teacherRepository) {
         this.teacherRepository = teacherRepository;
     }
 
@@ -37,6 +37,20 @@ public class TeacherService implements DataService<Teacher> {
     @Override
     public void sortUsersByName(List<Teacher> users) {
         Collections.sort(users, new UserComparator());
+    }
+
+    @Override
+    public Teacher findByBirth(int birth) {
+        return teacherRepository.findByBirth(birth);
+    }
+
+    @Override
+    public void DeleteUser(Teacher user) {
+        teacherRepository.delete(user);
+    }
+
+    public UserRepository<Teacher, Integer> getTeacherRepository() {
+        return teacherRepository;
     }
 
 }

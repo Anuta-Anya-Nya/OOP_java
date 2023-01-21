@@ -3,12 +3,12 @@ package controller;
 import java.util.List;
 
 import data.GroupStream;
-import service.group.StreamServiceImpl;
+import service.group.StreamService;
 
 public class StreamController implements Controller<GroupStream, Integer>{
-    private final StreamServiceImpl streamService;
+    private final StreamService streamService;
 
-    public StreamController(StreamServiceImpl streamService) {
+    public StreamController(StreamService streamService) {
         this.streamService = streamService;
     }
 

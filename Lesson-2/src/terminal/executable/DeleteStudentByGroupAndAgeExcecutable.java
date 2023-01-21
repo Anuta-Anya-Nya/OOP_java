@@ -1,6 +1,6 @@
 package terminal.executable;
 
-import data.Student;
+import data.comparators.StudentComparable;
 import service.user.StudentService;
 
 public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable {
@@ -16,11 +16,11 @@ public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable 
 
     @Override
     public void execute() {
-        Student student = studentService.findStudentByBirth(studentYearOfBirth);
+        StudentComparable student = studentService.findByBirth(studentYearOfBirth);
         if (student == null) {
             System.out.println("Студента c такими данными не найдено");
         } else if (student.getNumberGroup() == groupNumber) {
-            studentService.DeleteStudent(student);
+            studentService.DeleteUser(student);
             System.out.println("Студент удален");
         } else {
             System.out.println("Студента c такими данными не найдено");

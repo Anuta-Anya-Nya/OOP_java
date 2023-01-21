@@ -10,7 +10,7 @@ public class TerminalReader {
     // TerminalReader это синглтон. конструктор закрыт, getInstance - фабричный метод, есть статическую переменная, которая содержит единый экземпляр
     private static TerminalReader terminalReader;
     private final CommandParser commandParser;
-    private CommandExecutableFactory commandExecutableFactory;
+    private final CommandExecutableFactory commandExecutableFactory;
 
     public static TerminalReader getInstance(CommandParser commandParser,
             CommandExecutableFactory commandExecutableFactory) {

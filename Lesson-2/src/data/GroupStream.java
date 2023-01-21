@@ -1,11 +1,8 @@
 package data;
 
-import java.util.Iterator;
 import java.util.List;
 
-import data.iterators.GroupStreamIterator;
-
-public class GroupStream implements Iterable<StudentGroup>{
+public class GroupStream{
     private List<StudentGroup> studentGroupList;
     private int streamNumber;
     
@@ -13,10 +10,6 @@ public class GroupStream implements Iterable<StudentGroup>{
         this.studentGroupList = studentGroupList;
     }
     
-    @Override
-    public Iterator<StudentGroup> iterator() {
-       return new GroupStreamIterator(this);
-    }
     @Override
     public String toString() {
         return "Групп в потоке: "+ studentGroupList.size();

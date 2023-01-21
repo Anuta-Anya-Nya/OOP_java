@@ -1,13 +1,13 @@
 package terminal.executable;
 
-import data.Student;
+import data.comparators.StudentComparable;
 import service.user.StudentService;
 
 public class CreateStudentExecutable implements CommandExecutable {
     private final StudentService studentService;
-    private final Student student;
+    private final StudentComparable student;
 
-    public CreateStudentExecutable(StudentService studentService, Student student) {
+    public CreateStudentExecutable(StudentService studentService, StudentComparable student) {
         this.studentService = studentService;
         this.student = student;
     }

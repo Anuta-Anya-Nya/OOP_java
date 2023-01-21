@@ -1,29 +1,31 @@
 package repository;
 
-import data.Student;
+import data.comparators.StudentComparable;
 
-public class StudentRepository implements UserRepository<Student, Integer> {
-
-    @Override
-    public Student save(Student entity) {
-        return null;
-    }
+public class StudentRepository implements UserRepository<StudentComparable, Integer> {
 
     @Override
-    public Student findById(Integer id) {
+    public StudentComparable save(StudentComparable entity) {
         return null;
     }
 
     @Override
-    public Student findByFio(String fio) {
+    public StudentComparable findById(Integer id) {
         return null;
     }
 
-    public Student delete(Student entity) {
+    @Override
+    public StudentComparable findByFio(String fio) {
         return null;
     }
 
-    public Student findByBirth(Integer birthday) {
+    @Override
+    public StudentComparable delete(StudentComparable entity) {
+        return null;
+    }
+
+    @Override
+    public StudentComparable findByBirth(Integer birthday) {
         return null;
     }
 

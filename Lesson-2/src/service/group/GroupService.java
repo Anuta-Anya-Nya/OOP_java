@@ -1,9 +1,17 @@
 package service.group;
 
-import data.StudentGroup;
+public interface GroupService<U, I> {
+    U readGroup(I groupNumber);
 
-public interface GroupService {
-    StudentGroup readGroup(int groupNumber);
+    void createGroup(I groupNumber);
 
-    void createGroup(int groupNumber);
+    void removeStudent(String fio);
+
+    void sortStudent(U studentGroup);
+
+    U saveGroup(U group);
+
+    U findGroup(I number);
+
+
 }

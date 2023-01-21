@@ -14,7 +14,6 @@ public class Command {
         return arguments.get(0);
     }
     
-
     public boolean isCreateCommand(){
         return (mainCommand.equals(ADD));
     }

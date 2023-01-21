@@ -14,4 +14,9 @@ public class StreamRepository implements Repository<GroupStream, Integer> {
         return null;
     }
 
+    @Override
+    public GroupStream delete(GroupStream entity) {
+        return null;
+    }
+
 }

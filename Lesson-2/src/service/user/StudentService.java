@@ -3,53 +3,55 @@ package service.user;
 import java.util.Collections;
 import java.util.List;
 
-import data.Student;
+import data.comparators.StudentComparable;
 import data.comparators.UserComparator;
-import repository.StudentRepository;
+import repository.UserRepository;
 
-public class StudentService implements DataService<Student> {
-    private final StudentRepository studentRepository;
+public class StudentService implements DataService<StudentComparable> {
+    private final UserRepository<StudentComparable, Integer> studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(UserRepository<StudentComparable, Integer> studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    public Student findStudentByBirth(int birth) {
-        return studentRepository.findByBirth(birth);
-    }
-
-    public void DeleteStudent(Student student) {
-        studentRepository.delete(student);
+    @Override
+    public void create(StudentComparable user) {
+        studentRepository.save(user);
     }
 
     @Override
-    public void create(Student student) {
-        studentRepository.save(student);
-    }
-
-    @Override
-    public Student findById(Integer id) {
+    public StudentComparable findById(Integer id) {
         return studentRepository.findById(id);
     }
 
     @Override
-    public void sortUsers(List<Student> users) {
+    public StudentComparable findByFio(String fio) {
+        return studentRepository.findByFio(fio);
+    }
+
+    @Override
+    public void sortUsers(List<StudentComparable> users) {
         Collections.sort(users);
     }
 
     @Override
-    public void sortUsersByName(List<Student> users) {
+    public void sortUsersByName(List<StudentComparable> users) {
         Collections.sort(users, new UserComparator());
-
     }
 
     @Override
-    public Student findByFio(String fio) {
-        return studentRepository.findByFio(fio);
+    public StudentComparable findByBirth(int birth) {
+        return studentRepository.findByBirth(birth);
     }
 
-    public StudentRepository getStudentRepository() {
+    @Override
+    public void DeleteUser(StudentComparable user) {
+        studentRepository.delete(user);
+    }
+
+    public UserRepository<StudentComparable, Integer> getStudentRepository() {
         return studentRepository;
     }
+    
 
 }
