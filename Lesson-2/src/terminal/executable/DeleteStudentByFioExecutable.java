@@ -6,6 +6,7 @@ import service.user.DataService;
 public class DeleteStudentByFioExecutable implements CommandExecutable {
     private DataService<StudentComparable> studentService;
     private String studentFio;
+    private StudentComparable student;
 
     public DeleteStudentByFioExecutable(DataService<StudentComparable> studentService, String fio) {
         this.studentService = studentService;
@@ -14,7 +15,7 @@ public class DeleteStudentByFioExecutable implements CommandExecutable {
 
     @Override
     public void execute() {
-        StudentComparable student = studentService.findByFio(studentFio);
+        student = studentService.findByFio(studentFio);
         if (student == null) {
             System.out.println("Студента c такими ФИО не найдено");
         } else {

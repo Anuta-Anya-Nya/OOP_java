@@ -7,6 +7,7 @@ public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable 
     private DataService<StudentComparable> studentService;
     private int groupNumber;
     private int studentYearOfBirth;
+    private StudentComparable student;
 
     public DeleteStudentByGroupAndAgeExcecutable(DataService<StudentComparable> studentService, int group, int birth) {
         this.studentService = studentService;
@@ -16,7 +17,7 @@ public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable 
 
     @Override
     public void execute() {
-        StudentComparable student = studentService.findByBirth(studentYearOfBirth);
+        student = studentService.findByBirth(studentYearOfBirth);
         if (student == null) {
             System.out.println("Студента c такими данными не найдено");
         } else if (student.getNumberGroup() == groupNumber) {
