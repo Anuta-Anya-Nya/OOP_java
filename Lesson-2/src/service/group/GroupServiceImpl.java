@@ -1,22 +1,19 @@
 package service.group;
 
 import java.util.Collections;
-import java.util.Iterator;
 
 import data.StudentGroup;
-import data.comparators.StudentComparable;
 import data.iterators.StudentGroupIterable;
-import repository.Repository;
+import repository.GroupRepository;
 import util.ReaderFromTxt;
 import util.WriterToTxt;
 
-public class GroupServiceImpl implements GroupService<StudentGroupIterable, Integer> {
+public class GroupServiceImpl implements GroupService<StudentGroup, Integer> {
 
-    private StudentGroupIterable studentGroup;
-    private final Repository<StudentGroupIterable, Integer> studentGroupIntegerRepository;
+    private final GroupRepository studentGroupRepository;
 
-    public GroupServiceImpl(Repository<StudentGroupIterable, Integer> studentGroupIntegerRepository) {
-        this.studentGroupIntegerRepository = studentGroupIntegerRepository;
+    public GroupServiceImpl(GroupRepository studentGroupRepository) {
+        this.studentGroupRepository = studentGroupRepository;
     }
 
     @Override
@@ -31,35 +28,28 @@ public class GroupServiceImpl implements GroupService<StudentGroupIterable, Inte
 
     @Override
     public void removeStudent(String fio) {
-        Iterator<StudentComparable> iterator = getStudentGroup().iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().getFio().equals(fio)) {
-                iterator.remove();
-            }
-        }
+        studentGroupRepository.removeStudent(fio);
+        // Iterator<StudentComparable> iterator = studentGroup.iterator();
+        // while (iterator.hasNext()) {
+        // if (iterator.next().getFio().equals(fio)) {
+        // iterator.remove();
+        // }
+        // }
     }
 
     @Override
-    public void sortStudent(StudentGroupIterable studentGroup) {
+    public StudentGroup saveGroup(StudentGroup group) { // можно сделать void
+        return studentGroupRepository.save(group);
+    }
+
+    @Override
+    public StudentGroup findGroup(Integer number) {
+        return studentGroupRepository.findById(number);
+    }
+
+    @Override
+    public void sortStudent(StudentGroup studentGroup) {
         Collections.sort(studentGroup.getStudentList());
-    }
-
-    @Override
-    public StudentGroupIterable saveGroup(StudentGroupIterable group) { // можно сделать void
-        return studentGroupIntegerRepository.save(group);
-    }
-
-    @Override
-    public StudentGroupIterable findGroup(Integer number) {
-        return studentGroupIntegerRepository.findById(number);
-    }
-
-    public Repository<StudentGroupIterable, Integer> getStudentGroupIntegerRepository() {
-        return studentGroupIntegerRepository;
-    }
-
-    public StudentGroupIterable getStudentGroup() {
-        return studentGroup;
     }
 
 }

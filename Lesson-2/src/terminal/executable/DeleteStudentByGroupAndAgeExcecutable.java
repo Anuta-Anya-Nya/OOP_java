@@ -1,15 +1,17 @@
 package terminal.executable;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import service.user.DataService;
+import terminal.MessageLog;
 
 public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable {
-    private DataService<StudentComparable> studentService;
+    private DataService<Student> studentService;
     private int groupNumber;
     private int studentYearOfBirth;
-    private StudentComparable student;
+    private Student student;
+    private MessageLog messageLogExecutary;
 
-    public DeleteStudentByGroupAndAgeExcecutable(DataService<StudentComparable> studentService, int group, int birth) {
+    public DeleteStudentByGroupAndAgeExcecutable(DataService<Student> studentService, int group, int birth) {
         this.studentService = studentService;
         this.groupNumber = group;
         this.studentYearOfBirth = birth;
@@ -18,13 +20,11 @@ public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable 
     @Override
     public void execute() {
         student = studentService.findByBirth(studentYearOfBirth);
-        if (student == null) {
-            System.out.println("Студента c такими данными не найдено");
-        } else if (student.getNumberGroup() == groupNumber) {
+        if (student.getNumberGroup() == groupNumber) {
             studentService.DeleteUser(student);
-            System.out.println("Студент удален");
+            messageLogExecutary.successfulAction();
         } else {
-            System.out.println("Студента c такими данными не найдено");
+            messageLogExecutary.failedAction();
         }
     }
 

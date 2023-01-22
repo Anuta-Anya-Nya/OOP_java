@@ -1,12 +1,12 @@
 package terminal.executable;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import service.user.DataService;
 import terminal.Command;
 
 public class LogingCommandExecutableFactory extends CommandExecutableFactoryImpl {
 
-    public LogingCommandExecutableFactory(DataService<StudentComparable> studentService) {
+    public LogingCommandExecutableFactory(DataService<Student> studentService) {
         super(studentService);
     }
 

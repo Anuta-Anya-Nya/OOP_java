@@ -19,5 +19,9 @@ public class GroupRepository implements Repository<StudentGroup, Integer>{
         return null;
     }
 
+    public void removeStudent(String fio) {
+    }
+
+
 
 }

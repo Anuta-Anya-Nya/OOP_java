@@ -1,32 +1,32 @@
 package controller;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import service.user.DataService;
 
-public class StudentController implements UserController<StudentComparable, Integer>{
-    private final DataService<StudentComparable> studentService;
+public class StudentController implements UserController<Student, Integer>{
+    private final DataService<Student> studentService;
 
-    public StudentController(DataService<StudentComparable> studentService) {
+    public StudentController(DataService<Student> studentService) {
         this.studentService = studentService;
     }
 
     @Override
-    public void create(StudentComparable entity) {
+    public void create(Student entity) {
         studentService.create(entity);
     }
 
     @Override
-    public void save(StudentComparable entity) {
+    public void save(Student entity) {
         studentService.create(entity);
     }
 
     @Override
-    public StudentComparable findById(Integer id) {
+    public Student findById(Integer id) {
         return studentService.findById(id);
     }
 
     @Override
-    public StudentComparable findByFio(String fio) {
+    public Student findByFio(String fio) {
         return studentService.findByFio(fio);
     }
 

@@ -3,53 +3,53 @@ package service.user;
 import java.util.Collections;
 import java.util.List;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import data.comparators.UserComparator;
 import repository.UserRepository;
 
-public class StudentService implements DataService<StudentComparable> {
-    private final UserRepository<StudentComparable, Integer> studentRepository;
+public class StudentService implements DataService<Student> {
+    private final UserRepository<Student, Integer> studentRepository;
 
-    public StudentService(UserRepository<StudentComparable, Integer> studentRepository) {
+    public StudentService(UserRepository<Student, Integer> studentRepository) {
         this.studentRepository = studentRepository;
     }
 
     @Override
-    public void create(StudentComparable user) {
+    public void create(Student user) {
         studentRepository.save(user);
     }
 
     @Override
-    public StudentComparable findById(Integer id) {
+    public Student findById(Integer id) {
         return studentRepository.findById(id);
     }
 
     @Override
-    public StudentComparable findByFio(String fio) {
+    public Student findByFio(String fio) {
         return studentRepository.findByFio(fio);
     }
 
     @Override
-    public void sortUsers(List<StudentComparable> users) {
-        Collections.sort(users);
+    public void sortUsers(List<Student> users) {
+        this.sortUsersByName(users);
     }
 
     @Override
-    public void sortUsersByName(List<StudentComparable> users) {
+    public void sortUsersByName(List<Student> users) {
         Collections.sort(users, new UserComparator());
     }
 
     @Override
-    public StudentComparable findByBirth(int birth) {
+    public Student findByBirth(int birth) {
         return studentRepository.findByBirth(birth);
     }
 
     @Override
-    public void DeleteUser(StudentComparable user) {
+    public void DeleteUser(Student user) {
         studentRepository.delete(user);
     }
 
-    public UserRepository<StudentComparable, Integer> getStudentRepository() {
+    public UserRepository<Student, Integer> getStudentRepository() {
         return studentRepository;
     }
     

@@ -1,14 +1,16 @@
 package terminal.executable;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import service.user.DataService;
+import terminal.MessageLog;
 
 public class DeleteStudentByFioExecutable implements CommandExecutable {
-    private DataService<StudentComparable> studentService;
+    private DataService<Student> studentService;
     private String studentFio;
-    private StudentComparable student;
+    private Student student;
+    private MessageLog messageLogExecutary;
 
-    public DeleteStudentByFioExecutable(DataService<StudentComparable> studentService, String fio) {
+    public DeleteStudentByFioExecutable(DataService<Student> studentService, String fio) {
         this.studentService = studentService;
         this.studentFio = fio;
     }
@@ -17,10 +19,10 @@ public class DeleteStudentByFioExecutable implements CommandExecutable {
     public void execute() {
         student = studentService.findByFio(studentFio);
         if (student == null) {
-            System.out.println("Студента c такими ФИО не найдено");
+            messageLogExecutary.failedAction();
         } else {
             studentService.DeleteUser(student);
-            System.out.println("Студент c такими ФИО удален");
+            messageLogExecutary.successfulAction();
         }
     }
 }

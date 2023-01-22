@@ -1,22 +1,22 @@
 package terminal.executable;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import service.user.DataService;
 import terminal.Command;
 
 public class CommandExecutableFactoryImpl implements CommandExecutableFactory{
-    private DataService<StudentComparable> studentService;
+    private DataService<Student> studentService;
 
-    public CommandExecutableFactoryImpl(DataService<StudentComparable> studentService) {
+    public CommandExecutableFactoryImpl(DataService<Student> studentService) {
         this.studentService = studentService;
     }
 
     @Override
     public CommandExecutable create(Command input) {
             if(input.isCreateCommand()){
-                return new CreateStudentExecutable(studentService, new StudentComparable(input.getFirstArgument()));
+                return new CreateStudentExecutable(studentService, new Student(input.getFirstArgument()));
             } else if (input.isDeleteCommand()){
-                return new DeleteStudentExecutable(studentService, new StudentComparable(input.getFirstArgument()));
+                return new DeleteStudentExecutable(studentService, new Student(input.getFirstArgument()));
             }
             return null;
             

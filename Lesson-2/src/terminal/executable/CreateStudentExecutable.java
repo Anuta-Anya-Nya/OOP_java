@@ -1,13 +1,15 @@
 package terminal.executable;
 
-import data.comparators.StudentComparable;
+import data.Student;
 import service.user.DataService;
+import terminal.MessageLog;
 
 public class CreateStudentExecutable implements CommandExecutable {
-    private final DataService<StudentComparable> studentService;
-    private final StudentComparable student;
+    private final DataService<Student> studentService;
+    private final Student student;
+    private MessageLog messageLogExecutary;
 
-    public CreateStudentExecutable(DataService<StudentComparable> studentService, StudentComparable student) {
+    public CreateStudentExecutable(DataService<Student> studentService, Student student) {
         this.studentService = studentService;
         this.student = student;
     }
@@ -15,6 +17,7 @@ public class CreateStudentExecutable implements CommandExecutable {
     @Override
     public void execute() {
         studentService.create(student);
+        messageLogExecutary.successfulAction();
     }
 
 }

@@ -1,29 +1,30 @@
 package controller;
 
+import data.StudentGroup;
 import data.iterators.StudentGroupIterable;
 import service.group.GroupService;
 
-public class GroupController implements Controller<StudentGroupIterable, Integer> {
-    private final GroupService<StudentGroupIterable, Integer> groupServiceImpl;
+public class GroupController implements Controller<StudentGroup, Integer> {
+    private final GroupService<StudentGroup, Integer> groupServiceImpl;
 
-    public GroupController(GroupService<StudentGroupIterable, Integer> groupServiceImpl) {
+    public GroupController(GroupService<StudentGroup, Integer> groupServiceImpl) {
         this.groupServiceImpl = groupServiceImpl;
     }
 
     @Override
-    public void create(StudentGroupIterable entity) {
+    public void create(StudentGroup entity) {
         int groupNumber = entity.getGroupNumber();
         groupServiceImpl.createGroup(groupNumber);
         
     }
 
     @Override
-    public void save(StudentGroupIterable entity) {
+    public void save(StudentGroup entity) {
         groupServiceImpl.saveGroup(entity);
     }
 
     @Override
-    public StudentGroupIterable findById(Integer id) {
+    public StudentGroup findById(Integer id) {
         return groupServiceImpl.findGroup(id);
     }
 
