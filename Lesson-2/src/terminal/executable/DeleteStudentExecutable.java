@@ -1,13 +1,13 @@
 package terminal.executable;
 
 import data.comparators.StudentComparable;
-import service.user.StudentService;
+import service.user.DataService;
 
 public class DeleteStudentExecutable implements CommandExecutable {
-    private StudentService studentService;
+    private DataService<StudentComparable> studentService;
     private final StudentComparable student;
 
-    public DeleteStudentExecutable(StudentService studentService, StudentComparable student) {
+    public DeleteStudentExecutable(DataService<StudentComparable> studentService, StudentComparable student) {
         this.studentService = studentService;
         this.student = student;
     }

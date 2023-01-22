@@ -1,11 +1,15 @@
 package terminal.executable;
 
 import data.comparators.StudentComparable;
-import service.user.StudentService;
+import service.user.DataService;
 import terminal.Command;
 
 public class CommandExecutableFactoryImpl implements CommandExecutableFactory{
-    private StudentService studentService;
+    private DataService<StudentComparable> studentService;
+
+    public CommandExecutableFactoryImpl(DataService<StudentComparable> studentService) {
+        this.studentService = studentService;
+    }
 
     @Override
     public CommandExecutable create(Command input) {

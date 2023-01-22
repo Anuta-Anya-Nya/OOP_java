@@ -98,11 +98,3 @@ static <T extends Comparable<T>>//дженеризируем метод, мас�
 3.2 Создать интерфейс CommandExecutableFactory и имплементировать от него класс CommandExecutableFactoryImpl
 3.3 В классе TerminalReader Зеализовать DIP, т.е. возможность менять реализации CommandExecutableFactory
 
-
-1. 1 принцип - В классе Student удалила имплементацию интерфейса Comparable, создала класс StudentComparable extends Student implements Comparable<Student>. Начала сомневаться, что это было правильное решение, когда посыпалась вся программа, пришлось много где менять класс Студент на класс StudentComparable. 
-2. Добавила функции в дата репозиторий, по 5 принципу заменила StudentRepository и TeacherRepository на UserRepository<StudentComparable, Integer> , 
-В контроллере: StudentService на DataService<StudentComparable> , TeacherService на DataService<Teacher> 
-
-StudentGroup удалила implements Iterable<StudentComparable> 
-создала StudentGroupIterable implements Iterable<StudentComparable>
-GroupRepository заменила на Repository<StudentGroupIterable, Integer>
