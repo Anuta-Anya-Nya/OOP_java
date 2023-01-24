@@ -13,4 +13,15 @@ public class StudentTable extends Table<Student> {
         }
         return false;
     }
+
+    public Student findByFio(String name) {
+        for (Student student : elements) {
+            if(student.getFio().equals(name)){
+                return student;
+            }
+        }
+        return null;
+    }
+
+
 }

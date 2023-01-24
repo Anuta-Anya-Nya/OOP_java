@@ -49,8 +49,14 @@ public class TeacherService implements DataService<Teacher> {
         teacherRepository.delete(user);
     }
 
-    public UserRepository<Teacher, Integer> getTeacherRepository() {
-        return teacherRepository;
-    }
+    
 
+    @Override
+    public void printList() {
+        
+    }
+    
+    public UserRepository<Teacher, Integer> getTeacherRepository() {
+            return teacherRepository;
+        }
 }

@@ -19,4 +19,6 @@ public interface DataService<U extends User> {
 
    void DeleteUser(U user);
 
+   void printList();
+
 }

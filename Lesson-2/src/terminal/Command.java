@@ -6,6 +6,8 @@ import java.util.List;
 public class Command {
     private static final String ADD = "/add"; 
     private static final String DEL = "/delete";
+    private static final String PRINT = "/print";
+    
 
     private List<String> arguments;
     private String mainCommand;
@@ -25,6 +27,10 @@ public class Command {
 
     public boolean isDeleteCommand(){
         return (mainCommand.equals(DEL));
+    }
+
+    public boolean isPrintCommand(){
+        return (mainCommand.equals(PRINT));
     }
 
 

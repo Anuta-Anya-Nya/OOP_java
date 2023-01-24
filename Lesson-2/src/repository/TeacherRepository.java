@@ -34,4 +34,9 @@ public class TeacherRepository implements UserRepository<Teacher, Integer> {
         
     }
 
+    @Override
+    public void printList() {
+        
+    }
+
 }

@@ -16,8 +16,11 @@ public class CommandExecutableFactoryImpl implements CommandExecutableFactory{
             if(input.isCreateCommand()){
                 return new CreateStudentExecutable(studentService, new Student(input.getFirstArgument()));
             } else if (input.isDeleteCommand()){
-                return new DeleteStudentExecutable(studentService, new Student(input.getFirstArgument()));
+                return new DeleteStudentByFioExecutable(studentService, input.getFirstArgument());
+            } else if (input.isPrintCommand()){
+                return new PrintStudentExecutable(studentService);
             }
+                
             return null;
             
             // switch (command) {

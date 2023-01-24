@@ -49,9 +49,17 @@ public class StudentService implements DataService<Student> {
         studentRepository.removeByName(user.getFio());
     }
 
+    @Override
+    public void printList() {
+        studentRepository.printList();
+        
+    }
+
     public UserRepository<Student, Integer> getStudentRepository() {
         return studentRepository;
     }
+
+   
     
 
 }

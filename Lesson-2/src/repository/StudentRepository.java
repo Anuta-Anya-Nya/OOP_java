@@ -2,22 +2,21 @@ package repository;
 
 import data.Student;
 import db.StudentTable;
-import terminal.MessageLog;
-import terminal.MessageLogExecutable;
+import view.MessageResult;
+import view.MessageResultImpl;
 
 public class StudentRepository implements UserRepository<Student, Integer> {
     private StudentTable studentTable;
-    private MessageLog messageLogExecutary;
+    private MessageResult messageResultImpl;
 
     public StudentRepository() {
         this.studentTable = new StudentTable();
-        this.messageLogExecutary = new MessageLogExecutable();
+        this.messageResultImpl = new MessageResultImpl();
     }
     
     @Override
     public Student save(Student entity) {
         studentTable.save(entity);
-        messageLogExecutary.printTable(studentTable.getElements());
         return entity;
     }
 
@@ -28,7 +27,7 @@ public class StudentRepository implements UserRepository<Student, Integer> {
 
     @Override
     public Student findByFio(String fio) {
-        return null;
+        return studentTable.findByFio(fio);
     }
 
     @Override
@@ -44,7 +43,11 @@ public class StudentRepository implements UserRepository<Student, Integer> {
     @Override
     public void removeByName(String fio) {
         studentTable.removeByName(fio);
-        messageLogExecutary.printTable(studentTable.getElements());
+    }
+
+    @Override
+    public void printList() {
+        messageResultImpl.printTable(studentTable.getElements());
     }
 
 }

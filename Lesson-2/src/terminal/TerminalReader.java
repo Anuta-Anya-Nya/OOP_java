@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import terminal.executable.CommandExecutable;
 import terminal.executable.CommandExecutableFactory;
+import view.MessageResult;
 
 public class TerminalReader {
     // private final static Scanner sc = new Scanner(System.in);
@@ -11,20 +12,20 @@ public class TerminalReader {
     private static TerminalReader terminalReader;
     private final CommandParser commandParser;
     private final CommandExecutableFactory commandExecutableFactory;
-    private final MessageLog messageLogExecutable;
+    private final MessageResult messageResultImpl;
 
     public static TerminalReader getInstance(CommandParser commandParser,
-            CommandExecutableFactory commandExecutableFactory, MessageLog messageLogExecutable) {
+            CommandExecutableFactory commandExecutableFactory, MessageResult messageResultImpl) {
         if (terminalReader == null) {
-            terminalReader = new TerminalReader(commandParser, commandExecutableFactory, messageLogExecutable);
+            terminalReader = new TerminalReader(commandParser, commandExecutableFactory, messageResultImpl);
         }
         return terminalReader;
     }
 
-    private TerminalReader(CommandParser commandParser, CommandExecutableFactory commandExecutableFactory, MessageLog messageLogExecutable) {
+    private TerminalReader(CommandParser commandParser, CommandExecutableFactory commandExecutableFactory, MessageResult messageResultImpl) {
         this.commandParser = commandParser;
         this.commandExecutableFactory = commandExecutableFactory;
-        this.messageLogExecutable = messageLogExecutable;
+        this.messageResultImpl = messageResultImpl;
     }
 
     public void listenerCommand() {
@@ -33,11 +34,16 @@ public class TerminalReader {
             String command = sc.nextLine();
             Command comList = commandParser.parseCommand(command);
             CommandExecutable commandExecutable = commandExecutableFactory.create(comList);
-            if(commandExecutable.execute()){
-                messageLogExecutable.successfulAction();
+            if(commandExecutable == null){
+                messageResultImpl.failedCommand();
             } else {
-                messageLogExecutable.failedAction();
+                if(commandExecutable.execute()){
+                    messageResultImpl.successfulAction();
+                } else {
+                    messageResultImpl.failedAction();
+                }   
             }
+            
         }
     }
 }
