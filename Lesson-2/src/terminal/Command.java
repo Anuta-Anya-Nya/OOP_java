@@ -10,6 +10,11 @@ public class Command {
     private List<String> arguments;
     private String mainCommand;
 
+    public Command(List<String> arguments, String mainCommand) {
+        this.arguments = arguments;
+        this.mainCommand = mainCommand;
+    }
+
     public String getFirstArgument(){
         return arguments.get(0);
     }

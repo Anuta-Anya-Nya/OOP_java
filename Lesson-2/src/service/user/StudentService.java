@@ -46,7 +46,7 @@ public class StudentService implements DataService<Student> {
 
     @Override
     public void DeleteUser(Student user) {
-        studentRepository.delete(user);
+        studentRepository.removeByName(user.getFio());
     }
 
     public UserRepository<Student, Integer> getStudentRepository() {

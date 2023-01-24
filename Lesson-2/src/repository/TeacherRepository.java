@@ -29,4 +29,9 @@ public class TeacherRepository implements UserRepository<Teacher, Integer> {
         return null;
     }
 
+    @Override
+    public void removeByName(String fio) {
+        
+    }
+
 }

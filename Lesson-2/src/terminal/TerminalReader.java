@@ -11,18 +11,20 @@ public class TerminalReader {
     private static TerminalReader terminalReader;
     private final CommandParser commandParser;
     private final CommandExecutableFactory commandExecutableFactory;
+    private final MessageLog messageLogExecutable;
 
     public static TerminalReader getInstance(CommandParser commandParser,
-            CommandExecutableFactory commandExecutableFactory) {
+            CommandExecutableFactory commandExecutableFactory, MessageLog messageLogExecutable) {
         if (terminalReader == null) {
-            terminalReader = new TerminalReader(commandParser, commandExecutableFactory);
+            terminalReader = new TerminalReader(commandParser, commandExecutableFactory, messageLogExecutable);
         }
         return terminalReader;
     }
 
-    private TerminalReader(CommandParser commandParser, CommandExecutableFactory commandExecutableFactory) {
+    private TerminalReader(CommandParser commandParser, CommandExecutableFactory commandExecutableFactory, MessageLog messageLogExecutable) {
         this.commandParser = commandParser;
         this.commandExecutableFactory = commandExecutableFactory;
+        this.messageLogExecutable = messageLogExecutable;
     }
 
     public void listenerCommand() {
@@ -31,7 +33,11 @@ public class TerminalReader {
             String command = sc.nextLine();
             Command comList = commandParser.parseCommand(command);
             CommandExecutable commandExecutable = commandExecutableFactory.create(comList);
-            commandExecutable.execute();
+            if(commandExecutable.execute()){
+                messageLogExecutable.successfulAction();
+            } else {
+                messageLogExecutable.failedAction();
+            }
         }
     }
 }

@@ -1,12 +1,24 @@
 package repository;
 
 import data.Student;
+import db.StudentTable;
+import terminal.MessageLog;
+import terminal.MessageLogExecutable;
 
 public class StudentRepository implements UserRepository<Student, Integer> {
+    private StudentTable studentTable;
+    private MessageLog messageLogExecutary;
 
+    public StudentRepository() {
+        this.studentTable = new StudentTable();
+        this.messageLogExecutary = new MessageLogExecutable();
+    }
+    
     @Override
     public Student save(Student entity) {
-        return null;
+        studentTable.save(entity);
+        messageLogExecutary.printTable(studentTable.getElements());
+        return entity;
     }
 
     @Override
@@ -27,6 +39,12 @@ public class StudentRepository implements UserRepository<Student, Integer> {
     @Override
     public Student findByBirth(Integer birthday) {
         return null;
+    }
+
+    @Override
+    public void removeByName(String fio) {
+        studentTable.removeByName(fio);
+        messageLogExecutary.printTable(studentTable.getElements());
     }
 
 }

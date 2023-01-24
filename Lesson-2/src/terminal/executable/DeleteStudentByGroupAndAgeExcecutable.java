@@ -2,14 +2,12 @@ package terminal.executable;
 
 import data.Student;
 import service.user.DataService;
-import terminal.MessageLog;
 
 public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable {
     private DataService<Student> studentService;
     private int groupNumber;
     private int studentYearOfBirth;
     private Student student;
-    private MessageLog messageLogExecutary;
 
     public DeleteStudentByGroupAndAgeExcecutable(DataService<Student> studentService, int group, int birth) {
         this.studentService = studentService;
@@ -18,13 +16,13 @@ public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable 
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         student = studentService.findByBirth(studentYearOfBirth);
         if (student.getNumberGroup() == groupNumber) {
             studentService.DeleteUser(student);
-            messageLogExecutary.successfulAction();
+            return true;
         } else {
-            messageLogExecutary.failedAction();
+            return false;
         }
     }
 
