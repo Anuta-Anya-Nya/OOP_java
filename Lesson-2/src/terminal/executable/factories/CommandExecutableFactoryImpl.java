@@ -1,8 +1,14 @@
-package terminal.executable;
+package terminal.executable.factories;
 
 import data.Student;
 import service.user.DataService;
 import terminal.Command;
+import terminal.executable.commands.CommandExecutable;
+import terminal.executable.commands.CreateStudentByFioAgeGroupExecutable;
+import terminal.executable.commands.CreateStudentExecutable;
+import terminal.executable.commands.DeleteStudentByFioExecutable;
+import terminal.executable.commands.DeleteStudentByGroupAndAgeExcecutable;
+import terminal.executable.commands.PrintStudentExecutable;
 
 public class CommandExecutableFactoryImpl implements CommandExecutableFactory{
     private DataService<Student> studentService;
@@ -19,8 +25,11 @@ public class CommandExecutableFactoryImpl implements CommandExecutableFactory{
                 return new DeleteStudentByFioExecutable(studentService, input.getFirstArgument());
             } else if (input.isPrintCommand()){
                 return new PrintStudentExecutable(studentService);
+            } else if (input.isDelByGroupAndAgeCommand()){
+                return new DeleteStudentByGroupAndAgeExcecutable(studentService, input.getArguments());
+            } else if (input.isAddByFioGroupAgeCommand()){
+                return new CreateStudentByFioAgeGroupExecutable(studentService, input.getArguments());
             }
-                
             return null;
             
             // switch (command) {

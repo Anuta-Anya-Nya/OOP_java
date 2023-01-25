@@ -23,5 +23,14 @@ public class StudentTable extends Table<Student> {
         return null;
     }
 
+    public Student findByBirth(Integer year) {
+        for (Student student : elements) {
+            if(student.getBirthday() == year){
+                return student;
+            }
+        }
+        return null;
+    }
+
 
 }

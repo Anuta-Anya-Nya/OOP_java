@@ -1,4 +1,6 @@
-package terminal.executable;
+package terminal.executable.commands;
+
+import java.util.List;
 
 import data.Student;
 import service.user.DataService;
@@ -9,15 +11,18 @@ public class DeleteStudentByGroupAndAgeExcecutable implements CommandExecutable 
     private int studentYearOfBirth;
     private Student student;
 
-    public DeleteStudentByGroupAndAgeExcecutable(DataService<Student> studentService, int group, int birth) {
+    public DeleteStudentByGroupAndAgeExcecutable(DataService<Student> studentService, List<String> arguments) {
         this.studentService = studentService;
-        this.groupNumber = group;
-        this.studentYearOfBirth = birth;
+        this.groupNumber = Integer.parseInt(arguments.get(0));
+        this.studentYearOfBirth = Integer.parseInt(arguments.get(1));
     }
 
     @Override
     public boolean execute() {
         student = studentService.findByBirth(studentYearOfBirth);
+        if(student == null){
+            return false;
+        }
         if (student.getNumberGroup() == groupNumber) {
             studentService.DeleteUser(student);
             return true;

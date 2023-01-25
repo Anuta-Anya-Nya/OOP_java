@@ -37,7 +37,7 @@ public class StudentRepository implements UserRepository<Student, Integer> {
 
     @Override
     public Student findByBirth(Integer birthday) {
-        return null;
+        return studentTable.findByBirth(birthday);
     }
 
     @Override

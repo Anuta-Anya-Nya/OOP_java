@@ -7,9 +7,12 @@ public class Command {
     private static final String ADD = "/add"; 
     private static final String DEL = "/delete";
     private static final String PRINT = "/print";
+    private static final String DELGROUPAGE = "/deleteByGroupAndAge";
+    private static final String ADDFIOGROUPAGE = "/addByFioAgeGroup"; 
     
 
     private List<String> arguments;
+    
     private String mainCommand;
 
     public Command(List<String> arguments, String mainCommand) {
@@ -33,6 +36,17 @@ public class Command {
         return (mainCommand.equals(PRINT));
     }
 
+    public boolean isDelByGroupAndAgeCommand(){
+        return mainCommand.equals(DELGROUPAGE);
+    }
+
+    public boolean isAddByFioGroupAgeCommand(){
+        return mainCommand.equals(ADDFIOGROUPAGE);
+    }
+
+    public List<String> getArguments() {
+        return arguments;
+    }
 
         // String fioOrGroupNumber = input[1];
         // String studentYearOfBirth = input[2];

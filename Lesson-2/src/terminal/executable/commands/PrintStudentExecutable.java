@@ -1,4 +1,4 @@
-package terminal.executable;
+package terminal.executable.commands;
 
 import data.Student;
 import service.user.DataService;

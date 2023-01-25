@@ -2,8 +2,9 @@ package terminal;
 
 import java.util.Scanner;
 
-import terminal.executable.CommandExecutable;
-import terminal.executable.CommandExecutableFactory;
+import terminal.executable.commands.CommandExecutable;
+import terminal.executable.factories.CommandExecutableFactory;
+import terminal.parser.CommandParser;
 import view.MessageResult;
 
 public class TerminalReader {

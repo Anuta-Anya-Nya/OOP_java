@@ -1,8 +1,10 @@
-package terminal;
+package terminal.parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import terminal.Command;
 
 public class CommandParserImpl implements CommandParser {
 

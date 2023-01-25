@@ -1,13 +1,19 @@
 package data;
 
 public abstract class User {
+    
     // объекты студет, учитель и т.д., которые держат состояние, чтобы передать его в базу
-    private String fio;
-    private int birthday;
+    protected String fio;
+    protected int birthday;
     private int numberPass;
 
     public User(String fio) {
         this.fio = fio;
+    }
+    
+    public User(String fio, int birthday) {
+        this.fio = fio;
+        this.birthday = birthday;
     }
 
     public User(String fio, int birth, int numberPass) {
@@ -18,7 +24,7 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "Student{ fio: " + fio + " }";
+        return "Student { fio: " + fio + " }";
     }
 
     public String getFio() {
